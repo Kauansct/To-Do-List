@@ -1,0 +1,52 @@
+body{
+    background: url(./images/1339728.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.navbar{
+    backdrop-filter: blur(10px);
+    
+}
+
+#navbar-title{
+    color: white;
+}
+
+#card{
+    backdrop-filter: blur(15px); 
+}
+
+input, select{
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+select option{
+    color: black;
+}
+
+::placeholder{
+    color: white !important;
+}
+
+th{
+  border-top: none !important;
+  border-bottom: none !important;  
+}
+
+input:focus, textarea:focus, select:focus {
+    box-shadow: none !important;
+}
+
+.btn-close{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+
+.btn-close:focus{
+    outline: none;
+}

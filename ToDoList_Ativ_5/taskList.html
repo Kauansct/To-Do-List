@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>To Do App</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script src="app.js"></script>
+
+    <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#" id="navbar-title">To Do List</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Main<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="taskList.html">Task List</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12">
+                    <div class="card rounded-3 bg-transparent">
+                        <div id="card" class="card-body p-4">
+
+                            <h4 class="text-center my-3 pb-3 text-white">Task List</h4>
+
+                            <table class="table mb-4">
+                                <thead>
+                                    <tr>
+                                        <th class="text-white" scope="col">Date</th>
+                                        <th class="text-white" scope="col">Type</th>
+                                        <th class="text-white" scope="col">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="listTasks" class="text-white"></tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal de edição de tarefas -->
+                <div class="modal fade" tabindex="-1" id="editTaskModal" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Task</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeEditModal()">
+                            <img src="./Images/x.svg"></button>
+                        </div>
+                        <div class="modal-body">
+                            
+                            <form class="row g-3 d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <select class="form-control rounded-0" id="editYear">
+                                            <option value="">Year</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <select class="form-control rounded-0" id="editMonth">
+                                            <option value="">Month</option>
+                                            <option value="1">January</option>
+                                            <option value="2">February</option>
+                                            <option value="3">March</option>
+                                            <option value="4">April</option>
+                                            <option value="5">May</option>
+                                            <option value="6">June</option>
+                                            <option value="7">July</option>
+                                            <option value="8">August</option>
+                                            <option value="9">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <input type="text" class="form-control rounded-0" placeholder="Day" id="editDay" />
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="col-12 mb-3">
+                                    <select class="form-control rounded-0" id="editType">
+                                        <option value="">Type</option>
+                                        <option value="1">Studies</option>
+                                        <option value="2">Work</option>
+                                        <option value="3">Home</option>
+                                        <option value="4">Health</option>
+                                        <option value="5">Family</option>
+                                    </select>
+                                </div>
+                        
+                                <div class="col-12 mb-3">
+                                    <input type="text" class="form-control rounded-0" placeholder="Description" id="editDescription"/>
+                                </div>  
+                            
+                                
+                            </form>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                          <button type="button" class="btn btn-primary" onclick="saveTaskChanges()">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
